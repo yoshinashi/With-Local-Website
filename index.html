@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>With Local - Premium Local Tour Guide Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- ローディング画面 -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="images/With Local logo.png" alt="With Local Logo" class="logo-image">
+                    <span class="logo-text">With Local</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Service</a></li>
+                    <li><a href="#tour-plan">Tour Plan</a></li>
+                    <li><a href="#visit-area">Visit Area</a></li>
+                    <li><a href="#fee">Price</a></li>
+                    <li><a href="#case">Customer Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- メインビジュアル -->
+    <section id="home" class="hero" id="main-content">
+        <img src="images/samune2.png" alt="Japan Local Experience" class="hero-main-image">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Let's explore Japan<br>
+                    <span class="highlight typewriter">"With Local"</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Experience the true charm of Japan!
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Contact Us</a>
+                    <a href="#services" class="btn btn-secondary">View Services</a>
+                </div>
+            </div>
+            <div class="hero-photos">
+                <div class="photo-circle photo-1">
+                    <img src="images/samuneup1.png" alt="Local Experience 1">
+                </div>
+                <div class="photo-circle photo-2">
+                    <img src="images/samune2up.png" alt="Local Experience 2">
+                </div>
+                <div class="photo-circle photo-3">
+                    <img src="images/samuneup3.png" alt="Local Experience 3">
+                </div>
+                <div class="photo-circle photo-4">
+                    <img src="images/samuneup4.png" alt="Local Experience 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービスセクション -->
+    <section id="services" class="services">
+        <!-- 背景アニメーション要素 -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Our Service</h2>
+            
+            <!-- What is With Local -->
+            <div class="service-intro">
+                <h3 class="service-intro-title">What is "With Local"</h3>
+                <p class="service-intro-text">
+                    We're a team of friendly and passionate Tokyo local guides. As true natives, we're excited to share the real Tokyo — not just the touristy highlights, but the hidden local spots even most Japanese people don't know about.
+                </p>
+            </div>
+            
+            <!-- We offer -->
+            <div class="service-offer">
+                <h3 class="service-offer-title">We offer</h3>
+                <div class="service-offer-grid">
+                    <div class="service-offer-item">
+                        <div class="service-offer-icon">
+                            <i class="fas fa-heart"></i>
+                    </div>
+                        <div class="service-offer-content">
+                            <p>Enjoy a private and relaxed tour for the best trip.</p>
+                </div>
+                    </div>
+                    <div class="service-offer-item">
+                        <div class="service-offer-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="service-offer-content">
+                            <p>Explore hidden gems to experience the real Japan.</p>
+                </div>
+                    </div>
+                    <div class="service-offer-item">
+                        <div class="service-offer-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="service-offer-content">
+                            <p>Be guided by a young local with "Omotenashi"=hospitality.</p>
+                </div>
+                    </div>
+                </div>
+                
+                <!-- 注釈 -->
+                <div class="service-notes">
+                    <p class="note-text">※1 We also offer photographic tours to take unique and beautiful photographs that will remain in your memory.</p>
+                    <p class="note-text">※2 Possible dates are limited, so please consult with us in advance if you wish to do so.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ツアープランセクション -->
+    <section id="tour-plan" class="tour-plan">
+        <div class="container">
+            <h2 class="section-title">Model Course</h2>
+            
+            <!-- コース選択ボタン -->
+            <div class="course-selector">
+                <button class="course-btn active" data-course="course1">
+                    <span class="course-number">Course ①</span>
+                    <span class="course-title">West Tokyo Hidden Gems</span>
+                </button>
+                <button class="course-btn" data-course="course2">
+                    <span class="course-number">Course ②</span>
+                    <span class="course-title">Tokyo Time Slip Tour</span>
+                </button>
+                <button class="course-btn" data-course="course3">
+                    <span class="course-number">Course ③</span>
+                    <span class="course-title">Iconic Full-Order Tour</span>
+                </button>
+            </div>
+            
+            <!-- コース詳細 -->
+            <div class="course-details">
+                <!-- Course 1 -->
+                <div class="course-content active" id="course1">
+                    <h3 class="course-subtitle">~West Tokyo Hidden Gems Tour~</h3>
+                    <div class="course-stops">
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/kichijoji.png" alt="Kichijoji">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Kichijoji】</h4>
+                                    <span class="stop-duration">Stay : 1~1.5h</span>
+                                </div>
+                                <p class="stop-description">Stroll through the lush Inokashira Park and explore the neighborhood's trendy cafes and shops.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/nakano.png" alt="Nakano">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Nakano】</h4>
+                                    <span class="stop-duration">Stay : 1.5h</span>
+                                </div>
+                                <p class="stop-description">Dive into the world of anime and manga at Nakano Broadway, known as "another Akihabara."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/shimokitazawa.png" alt="Shimokitazawa">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Shimokitazawa】</h4>
+                                    <span class="stop-duration">Stay : 1.5h</span>
+                                </div>
+                                <p class="stop-description">Discover one-of-a-kind items in the heart of youth culture and vintage fashion.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/gotokuji.png" alt="Gotokuji Temple">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Gotokuji Temple】</h4>
+                                    <span class="stop-duration">Stay : 1h</span>
+                                </div>
+                                <p class="stop-description">Visit the temple famous for its thousands of lucky cat statues and peaceful atmosphere.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-content" id="course2">
+                    <h3 class="course-subtitle">~Tokyo Time Slip Tour~</h3>
+                    <div class="course-stops">
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/kagurazaka.png" alt="Kagurazaka">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Kagurazaka】</h4>
+                                    <span class="stop-duration">Stay : 2h</span>
+                                </div>
+                                <p class="stop-description">Explore the charming backstreets of this former geisha district, lined with traditional restaurants and modern cafes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/jimbocho.png" alt="Jimbocho">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Jimbocho】</h4>
+                                    <span class="stop-duration">Stay : 1h</span>
+                                </div>
+                                <p class="stop-description">Get lost in the endless aisles of new and used bookstores. It's the perfect place to find a unique literary treasure.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/yanesen.png" alt="Yanesen">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Yanesen】</h4>
+                                    <span class="stop-duration">Stay : 2h</span>
+                                </div>
+                                <p class="stop-description">Experience the friendly, local atmosphere of the Yanaka, Nezu, and Sendagi areas. Enjoy nostalgic street food at Yanaka Ginza shopping street.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-content" id="course3">
+                    <h3 class="course-subtitle">~Iconic Full-Order Tour~</h3>
+                    <div class="course-stops">
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/tsukiji.png" alt="Tsukiji">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Tsukiji】</h4>
+                                    <span class="stop-duration">Stay : 2h</span>
+                                </div>
+                                <p class="stop-description">Savor fresh seafood and explore the bustling lanes of the famous Tsukiji Outer Market.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/akihabara.png" alt="Akihabara">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Akihabara】</h4>
+                                    <span class="stop-duration">Stay : 1h</span>
+                                </div>
+                                <p class="stop-description">Immerse yourself in the vibrant world of anime, manga, and electronics in Japan's otaku capital.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/ueno.png" alt="Ueno">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Ueno】</h4>
+                                    <span class="stop-duration">Stay : 1.5h</span>
+                                </div>
+                                <p class="stop-description">Stroll through the vast Ueno Park, visit historic temples, and shop at the lively Ameyoko Street market.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="course-stop">
+                            <div class="stop-image">
+                                <img src="images/asakusa.png" alt="Asakusa">
+                            </div>
+                            <div class="stop-content">
+                                <div class="stop-header">
+                                    <h4 class="stop-name">【Asakusa】</h4>
+                                    <span class="stop-duration">Stay : 0.5h</span>
+                                </div>
+                                <p class="stop-description">Visit the ancient Senso-ji Temple, walk through the iconic Kaminarimon Gate, and explore the traditional Nakamise shopping street.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 訪問エリアセクション -->
+    <section id="visit-area" class="visit-area">
+        <div class="container">
+            <h2 class="section-title">Explore Areas</h2>
+            <div class="visit-area-intro">
+                <h3 class="visit-area-subtitle">Places to explore with With Local</h3>
+                <p class="visit-area-description">Discover hidden gems and local favorites that only true Tokyo natives know about.</p>
+            </div>
+            
+            <div class="visit-areas-slider">
+                <div class="slider-container">
+                    <div class="slider-track">
+                        <!-- コース1のエリア -->
+                        <div class="visit-area-item" data-area="kichijoji">
+                            <div class="visit-area-image">
+                                <img src="images/kichijoji.png" alt="Kichijoji">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Kichijoji</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="nakano">
+                            <div class="visit-area-image">
+                                <img src="images/nakano.png" alt="Nakano">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Nakano</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="shimokitazawa">
+                            <div class="visit-area-image">
+                                <img src="images/shimokitazawa.png" alt="Shimokitazawa">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Shimokitazawa</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="gotokuji">
+                            <div class="visit-area-image">
+                                <img src="images/gotokuji.png" alt="Gotokuji Temple">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Gotokuji Temple</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- コース2のエリア -->
+                        <div class="visit-area-item" data-area="kagurazaka">
+                            <div class="visit-area-image">
+                                <img src="images/kagurazaka.png" alt="Kagurazaka">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Kagurazaka</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="jimbocho">
+                            <div class="visit-area-image">
+                                <img src="images/jimbocho.png" alt="Jimbocho">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Jimbocho</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="yanesen">
+                            <div class="visit-area-image">
+                                <img src="images/yanesen.png" alt="Yanesen">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Yanesen</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- コース3のエリア -->
+                        <div class="visit-area-item" data-area="tsukiji-course3">
+                            <div class="visit-area-image">
+                                <img src="images/tsukiji.png" alt="Tsukiji">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Tsukiji</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="akihabara-course3">
+                            <div class="visit-area-image">
+                                <img src="images/akihabara.png" alt="Akihabara">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Akihabara</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="ueno-course3">
+                            <div class="visit-area-image">
+                                <img src="images/ueno.png" alt="Ueno">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Ueno</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="asakusa-course3">
+                            <div class="visit-area-image">
+                                <img src="images/asakusa.png" alt="Asakusa">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Asakusa</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- 追加エリア -->
+                        <div class="visit-area-item" data-area="shibuya">
+                            <div class="visit-area-image">
+                                <img src="images/shibuya.png" alt="Shibuya">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Shibuya</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="shinjuku">
+                            <div class="visit-area-image">
+                                <img src="images/shinjuku.jpeg" alt="Shinjuku">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Shinjuku</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="harajuku">
+                            <div class="visit-area-image">
+                                <img src="images/harajuku.png" alt="Harajuku">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Harajuku</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="visit-area-item" data-area="hands-on">
+                            <div class="visit-area-image">
+                                <img src="images/comingsoon.png" alt="Hands-on Experience">
+                            </div>
+                            <div class="visit-area-overlay">
+                                <h4>Hands-on Experience</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- スライダーコントロール -->
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn orange-slider-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn next-btn orange-slider-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ポップアップモーダル -->
+    <div class="area-modal" id="areaModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="" alt="" id="modalImage">
+                </div>
+                <div class="modal-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                    <div class="modal-features">
+                        <h4>Highlights:</h4>
+                        <ul id="modalFeatures"></ul>
+                    </div>
+                    <div class="modal-tips">
+                        <h4>Local Tips:</h4>
+                        <p id="modalTips"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 料金セクション -->
+    <section id="fee" class="fee">
+        <div class="container">
+            <h2 class="section-title">Pricing</h2>
+            <div class="fee-content">
+                <!-- 時間選択ボタン -->
+                <div class="duration-selector">
+                    <button class="duration-btn active" data-duration="2">
+                        <span class="duration-number">2 Hours</span>
+                        <span class="duration-areas">1 Area</span>
+                        <span class="duration-label">Number of areas to explore</span>
+                    </button>
+                    <button class="duration-btn" data-duration="4">
+                        <span class="duration-number">4 Hours</span>
+                        <span class="duration-areas">2-3 Areas</span>
+                        <span class="duration-label">Number of areas to explore</span>
+                    </button>
+                    <button class="duration-btn" data-duration="6">
+                        <span class="duration-number">6 Hours</span>
+                        <span class="duration-areas">3-4 Areas</span>
+                        <span class="duration-label">Number of areas to explore</span>
+                    </button>
+                </div>
+
+                <!-- 統合された料金・グループ・割引セクション -->
+                <div class="integrated-pricing-section">
+                    <!-- 動的料金表 -->
+                    <div class="dynamic-pricing-table" id="dynamicPricingTable">
+                        <div class="pricing-table-container">
+                            <table class="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th>People</th>
+                                        <th id="selectedDuration">2-Hour Tour</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pricingTableBody">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>¥20,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>¥20,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>¥24,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>¥28,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- グループ・割引情報とContact導線 -->
+                    <div class="pricing-options">
+                        <div class="options-block">
+                            <div class="options-info">
+                                <div class="option-card">
+                                    <div class="option-icon">
+                                        <i class="fas fa-child"></i>
+                                    </div>
+                                    <div class="option-content">
+                                        <h4>Children Discount</h4>
+                                        <p>Special rates available for small children</p>
+                                    </div>
+                                </div>
+                                <div class="option-card">
+                                    <div class="option-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="option-content">
+                                        <h4>Group Tours</h4>
+                                        <p>We can accommodate groups of 4 or more people</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-section">
+                                <a href="#contact" class="contact-cta-button">
+                                    <i class="fas fa-envelope"></i>
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声セクション -->
+    <section id="case" class="customer-reviews">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-slider">
+                <div class="slider-container">
+                    <div class="slider-track">
+                        <!-- レビュー1 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/samuneup1.png" alt="Customer Review 1">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"Thanks to our local guide, we discovered amazing places not found in tourist guides. We're truly grateful!"</p>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Sarah Johnson</h4>
+                                    <span>New York, USA</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- レビュー2 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/samune2up.png" alt="Customer Review 2">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"We could enjoy the tour without worrying about language barriers. The guide's explanations were clear and very satisfying."</p>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Li Ming</h4>
+                                    <span>Beijing, China</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- レビュー3 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/samuneup3.png" alt="Customer Review 3">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"The customized tour perfectly matched our interests. We definitely want to use this service again next time."</p>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Kim Min-ji</h4>
+                                    <span>Seoul, South Korea</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- レビュー4 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/samuneup4.png" alt="Customer Review 4">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"Our guide showed us the real Tokyo that we would never have found on our own. Absolutely amazing experience!"</p>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Emma Thompson</h4>
+                                    <span>London, UK</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- レビュー5 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/kichijoji.png" alt="Customer Review 5">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"The attention to detail and local knowledge was incredible. We learned so much about Japanese culture!"</p>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Carlos Rodriguez</h4>
+                                    <span>Madrid, Spain</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- レビュー6 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/shimokitazawa.png" alt="Customer Review 6">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"Perfect balance of popular spots and hidden gems. Our guide was friendly and knowledgeable!"</p>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Anna Kowalski</h4>
+                                    <span>Warsaw, Poland</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- スライダーコントロール -->
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn orange-slider-btn" id="reviewsPrevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="slider-dots" id="reviewsSliderDots"></div>
+                    <button class="slider-btn next-btn orange-slider-btn" id="reviewsNextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- お問い合わせセクション -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <p>Feel free to contact us about With Local tours. We'll propose the best plan according to your requirements.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>sfujii@withlocal-jp.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>090-8504-1453</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Start Time</label>
+                            <select name="tour-time" required>
+                                <option value="">Please select a time</option>
+                                <option value="09:00">9:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Date (1st Choice)</label>
+                            <input type="text" name="tour-date1" placeholder="MM/DD/YYYY" class="date-input" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Date (2nd Choice)</label>
+                            <input type="text" name="tour-date2" placeholder="MM/DD/YYYY" class="date-input" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Participants</label>
+                            <input type="number" name="participants" min="1" max="20" placeholder="Enter number of participants" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Please let us know if you have children, group size (5+ people), or any special requirements..." rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/With Local logo.png" alt="With Local Logo" class="footer-logo-image">
+                        <span class="footer-logo-text">With Local</span>
+                    </div>
+                    <p>Premium local tour guide services for authentic experiences</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Our Service</a></li>
+                        <li><a href="#tour-plan">Tour Plan</a></li>
+                        <li><a href="#visit-area">Visit Area</a></li>
+                        <li><a href="#fee">Price</a></li>
+                        <li><a href="#case">Customer Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/withlocal_japan/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 With Local. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

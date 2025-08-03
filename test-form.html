@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォームテスト - With Local</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #5a6fd8;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .notification {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .notification.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .notification.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .notification.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .test-info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .test-info h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>With Local フォームテスト</h1>
+        
+        <div class="test-info">
+            <h3>テスト手順</h3>
+            <ol>
+                <li>以下のフォームにテストデータを入力</li>
+                <li>「送信テスト」ボタンをクリック</li>
+                <li>Googleスプレッドシートにデータが追加されることを確認</li>
+                <li>ブラウザのコンソール（F12）でエラーメッセージを確認</li>
+                <li>下のデバッグ情報で送信データを確認</li>
+            </ol>
+        </div>
+
+        <form id="testForm">
+            <div class="form-group">
+                <label for="name">お名前 *</label>
+                <input type="text" id="name" name="name" placeholder="テスト太郎" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">メールアドレス *</label>
+                <input type="email" id="email" name="email" placeholder="test@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">電話番号</label>
+                <input type="tel" id="phone" name="phone" placeholder="090-1234-5678">
+            </div>
+            
+            <div class="form-group">
+                <label for="tour-time">希望開始時間 *</label>
+                <select id="tour-time" name="tour-time" required>
+                    <option value="">時間を選択してください</option>
+                    <option value="09:00">9:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="tour-date1">第1希望日程 *</label>
+                <input type="text" id="tour-date1" name="tour-date1" placeholder="MM/DD/YYYY" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tour-date2">第2希望日程</label>
+                <input type="text" id="tour-date2" name="tour-date2" placeholder="MM/DD/YYYY">
+            </div>
+            
+            <div class="form-group">
+                <label for="participants">参加人数 *</label>
+                <input type="number" id="participants" name="participants" min="1" max="20" placeholder="2" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">詳細メッセージ</label>
+                <textarea id="message" name="message" placeholder="テスト用のメッセージです。"></textarea>
+            </div>
+            
+            <button type="submit">送信テスト</button>
+        </form>
+        
+        <div id="notification"></div>
+        
+        <!-- デバッグ情報表示エリア -->
+        <div class="debug-info" style="margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+            <h3>デバッグ情報</h3>
+            <div id="debugData" style="font-family: monospace; font-size: 12px; white-space: pre-wrap;"></div>
+        </div>
+    </div>
+
+    <script>
+        // テスト用の日付設定
+        document.getElementById('tour-date1').value = '12/25/2024';
+        document.getElementById('tour-date2').value = '12/26/2024';
+        
+        // デバッグ情報表示関数
+        function updateDebugInfo(data) {
+            const debugElement = document.getElementById('debugData');
+            debugElement.textContent = JSON.stringify(data, null, 2);
+        }
+        
+        // フォーム送信処理
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = '送信中...';
+            
+            // 通知を表示
+            showNotification('送信中...', 'info');
+            
+            try {
+                // フォームデータを収集
+                const formData = new FormData(this);
+                const data = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                
+                console.log('送信データ:', data);
+                
+                // デバッグ情報を表示
+                updateDebugInfo(data);
+                
+                // Google Apps ScriptのURL（実際のURLに変更してください）
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbw9PznK4DxeswbwjmOETdBX8aWfBtaHHYc7HQnIL_m_NkRP7AJEpolUG00rpDyooNwVeQ/exec';
+                
+                console.log('送信先URL:', scriptUrl);
+                
+                // データをJSON形式で送信
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // CORSエラーを回避
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                console.log('送信完了');
+                console.log('レスポンス:', response);
+                
+                // 成功時の処理
+                showNotification('テスト送信が完了しました。スプレッドシートを確認してください。', 'success');
+                this.reset();
+                
+                // テスト用の日付を再設定
+                document.getElementById('tour-date1').value = '12/25/2024';
+                document.getElementById('tour-date2').value = '12/26/2024';
+                
+            } catch (error) {
+                console.error('送信エラー:', error);
+                showNotification('送信に失敗しました。コンソールでエラーを確認してください。', 'error');
+                
+                // エラー情報もデバッグ表示に追加
+                const debugElement = document.getElementById('debugData');
+                debugElement.textContent += '\n\nエラー情報:\n' + error.toString();
+            } finally {
+                // 送信ボタンを元に戻す
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
+        
+        // 通知表示機能
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            // 5秒後に自動で消す（成功メッセージ以外）
+            if (type !== 'success') {
+                setTimeout(() => {
+                    notification.textContent = '';
+                    notification.className = 'notification';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html> 
