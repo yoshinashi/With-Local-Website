@@ -40,6 +40,9 @@
         </nav>
     </header>
 
+    <!-- モバイルメニューオーバーレイ -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
     <!-- メインビジュアル -->
     <section id="home" class="hero" id="main-content">
         <img src="images/samune2.png" alt="Japan Local Experience" class="hero-main-image">
@@ -59,16 +62,16 @@
             </div>
             <div class="hero-photos">
                 <div class="photo-circle photo-1">
-                    <img src="images/samuneup1.png" alt="Local Experience 1">
+                    <img src="images/samuneup4.png" alt="Local Experience 1">
                 </div>
                 <div class="photo-circle photo-2">
-                    <img src="images/samune2up.png" alt="Local Experience 2">
+                    <img src="images/samuneup1.png" alt="Local Experience 2">
                 </div>
                 <div class="photo-circle photo-3">
-                    <img src="images/samuneup3.png" alt="Local Experience 3">
+                    <img src="images/samune2up.png" alt="Local Experience 3">
                 </div>
                 <div class="photo-circle photo-4">
-                    <img src="images/samuneup4.png" alt="Local Experience 4">
+                    <img src="images/samuneup3.png" alt="Local Experience 4">
                 </div>
             </div>
         </div>
@@ -167,57 +170,68 @@
                 <div class="course-content active" id="course1">
                     <h3 class="course-subtitle">~West Tokyo Hidden Gems Tour~</h3>
                     <div class="course-stops">
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/kichijoji.png" alt="Kichijoji">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Kichijoji】</h4>
-                                    <span class="stop-duration">Stay : 1~1.5h</span>
+                        <div class="course-stops-container">
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/kichijoji.png" alt="Kichijoji">
                                 </div>
-                                <p class="stop-description">Stroll through the lush Inokashira Park and explore the neighborhood's trendy cafes and shops.</p>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Kichijoji】</h4>
+                                        <span class="stop-duration">Stay : 1~1.5h</span>
+                                    </div>
+                                    <p class="stop-description">Stroll through the lush Inokashira Park and explore the neighborhood's trendy cafes and shops.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/nakano.png" alt="Nakano">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Nakano】</h4>
+                                        <span class="stop-duration">Stay : 1.5h</span>
+                                    </div>
+                                    <p class="stop-description">Dive into the world of anime and manga at Nakano Broadway, known as "another Akihabara."</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/shimokitazawa.png" alt="Shimokitazawa">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Shimokitazawa】</h4>
+                                        <span class="stop-duration">Stay : 1.5h</span>
+                                    </div>
+                                    <p class="stop-description">Discover one-of-a-kind items in the heart of youth culture and vintage fashion.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/gotokuji.png" alt="Gotokuji Temple">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Gotokuji Temple】</h4>
+                                        <span class="stop-duration">Stay : 1h</span>
+                                    </div>
+                                    <p class="stop-description">Visit the temple famous for its thousands of lucky cat statues and peaceful atmosphere.</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/nakano.png" alt="Nakano">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Nakano】</h4>
-                                    <span class="stop-duration">Stay : 1.5h</span>
-                                </div>
-                                <p class="stop-description">Dive into the world of anime and manga at Nakano Broadway, known as "another Akihabara."</p>
-                            </div>
-                        </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/shimokitazawa.png" alt="Shimokitazawa">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Shimokitazawa】</h4>
-                                    <span class="stop-duration">Stay : 1.5h</span>
-                                </div>
-                                <p class="stop-description">Discover one-of-a-kind items in the heart of youth culture and vintage fashion.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/gotokuji.png" alt="Gotokuji Temple">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Gotokuji Temple】</h4>
-                                    <span class="stop-duration">Stay : 1h</span>
-                                </div>
-                                <p class="stop-description">Visit the temple famous for its thousands of lucky cat statues and peaceful atmosphere.</p>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="course-slider-controls">
+                        <button class="course-slider-btn prev-btn" id="course1PrevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="course-slider-dots" id="course1Dots"></div>
+                        <button class="course-slider-btn next-btn" id="course1NextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
                 
@@ -225,44 +239,55 @@
                 <div class="course-content" id="course2">
                     <h3 class="course-subtitle">~Tokyo Time Slip Tour~</h3>
                     <div class="course-stops">
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/kagurazaka.png" alt="Kagurazaka">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Kagurazaka】</h4>
-                                    <span class="stop-duration">Stay : 2h</span>
+                        <div class="course-stops-container">
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/kagurazaka.png" alt="Kagurazaka">
                                 </div>
-                                <p class="stop-description">Explore the charming backstreets of this former geisha district, lined with traditional restaurants and modern cafes.</p>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Kagurazaka】</h4>
+                                        <span class="stop-duration">Stay : 2h</span>
+                                    </div>
+                                    <p class="stop-description">Explore the charming backstreets of this former geisha district, lined with traditional restaurants and modern cafes.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/jimbocho.png" alt="Jimbocho">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Jimbocho】</h4>
+                                        <span class="stop-duration">Stay : 1h</span>
+                                    </div>
+                                    <p class="stop-description">Get lost in the endless aisles of new and used bookstores. It's the perfect place to find a unique literary treasure.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/yanesen.png" alt="Yanesen">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Yanesen】</h4>
+                                        <span class="stop-duration">Stay : 2h</span>
+                                    </div>
+                                    <p class="stop-description">Experience the friendly, local atmosphere of the Yanaka, Nezu, and Sendagi areas. Enjoy nostalgic street food at Yanaka Ginza shopping street.</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/jimbocho.png" alt="Jimbocho">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Jimbocho】</h4>
-                                    <span class="stop-duration">Stay : 1h</span>
-                                </div>
-                                <p class="stop-description">Get lost in the endless aisles of new and used bookstores. It's the perfect place to find a unique literary treasure.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/yanesen.png" alt="Yanesen">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Yanesen】</h4>
-                                    <span class="stop-duration">Stay : 2h</span>
-                                </div>
-                                <p class="stop-description">Experience the friendly, local atmosphere of the Yanaka, Nezu, and Sendagi areas. Enjoy nostalgic street food at Yanaka Ginza shopping street.</p>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="course-slider-controls">
+                        <button class="course-slider-btn prev-btn" id="course2PrevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="course-slider-dots" id="course2Dots"></div>
+                        <button class="course-slider-btn next-btn" id="course2NextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
                 
@@ -270,57 +295,68 @@
                 <div class="course-content" id="course3">
                     <h3 class="course-subtitle">~Iconic Full-Order Tour~</h3>
                     <div class="course-stops">
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/tsukiji.png" alt="Tsukiji">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Tsukiji】</h4>
-                                    <span class="stop-duration">Stay : 2h</span>
+                        <div class="course-stops-container">
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/tsukiji.png" alt="Tsukiji">
                                 </div>
-                                <p class="stop-description">Savor fresh seafood and explore the bustling lanes of the famous Tsukiji Outer Market.</p>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Tsukiji】</h4>
+                                        <span class="stop-duration">Stay : 2h</span>
+                                    </div>
+                                    <p class="stop-description">Savor fresh seafood and explore the bustling lanes of the famous Tsukiji Outer Market.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/akihabara.png" alt="Akihabara">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Akihabara】</h4>
+                                        <span class="stop-duration">Stay : 1h</span>
+                                    </div>
+                                    <p class="stop-description">Immerse yourself in the vibrant world of anime, manga, and electronics in Japan's otaku capital.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/ueno.png" alt="Ueno">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Ueno】</h4>
+                                        <span class="stop-duration">Stay : 1.5h</span>
+                                    </div>
+                                    <p class="stop-description">Stroll through the vast Ueno Park, visit historic temples, and shop at the lively Ameyoko Street market.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="course-stop">
+                                <div class="stop-image">
+                                    <img src="images/asakusa.png" alt="Asakusa">
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-header">
+                                        <h4 class="stop-name">【Asakusa】</h4>
+                                        <span class="stop-duration">Stay : 0.5h</span>
+                                    </div>
+                                    <p class="stop-description">Visit the ancient Senso-ji Temple, walk through the iconic Kaminarimon Gate, and explore the traditional Nakamise shopping street.</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/akihabara.png" alt="Akihabara">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Akihabara】</h4>
-                                    <span class="stop-duration">Stay : 1h</span>
-                                </div>
-                                <p class="stop-description">Immerse yourself in the vibrant world of anime, manga, and electronics in Japan's otaku capital.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/ueno.png" alt="Ueno">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Ueno】</h4>
-                                    <span class="stop-duration">Stay : 1.5h</span>
-                                </div>
-                                <p class="stop-description">Stroll through the vast Ueno Park, visit historic temples, and shop at the lively Ameyoko Street market.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="course-stop">
-                            <div class="stop-image">
-                                <img src="images/asakusa.png" alt="Asakusa">
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-header">
-                                    <h4 class="stop-name">【Asakusa】</h4>
-                                    <span class="stop-duration">Stay : 0.5h</span>
-                                </div>
-                                <p class="stop-description">Visit the ancient Senso-ji Temple, walk through the iconic Kaminarimon Gate, and explore the traditional Nakamise shopping street.</p>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="course-slider-controls">
+                        <button class="course-slider-btn prev-btn" id="course3PrevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="course-slider-dots" id="course3Dots"></div>
+                        <button class="course-slider-btn next-btn" id="course3NextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -711,7 +747,7 @@
                         <!-- レビュー5 -->
                         <div class="review-card">
                             <div class="review-image">
-                                <img src="images/kichijoji.png" alt="Customer Review 5">
+                                <img src="images/case05.jpg" alt="Customer Review 5">
                             </div>
                             <div class="review-content">
                                 <div class="review-stars">
@@ -722,10 +758,10 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <div class="review-quote">
-                                    <p>"The attention to detail and local knowledge was incredible. We learned so much about Japanese culture!"</p>
+                                    <p>"Our guide from With Local was amazing. They were personable, lovely to be around, and extremely knowledgeable about the area. Everything went smoothly as they guided us through nature and Shibuya. They went above and beyond, spending extra time with us. We will definitely book this tour again for any guests we have visiting Japan."</p>
                                 </div>
                                 <div class="review-author">
-                                    <span>Madrid, Spain</span>
+                                    <span>From Switzerland</span>
                                 </div>
                             </div>
                         </div>
@@ -733,7 +769,7 @@
                         <!-- レビュー6 -->
                         <div class="review-card">
                             <div class="review-image">
-                                <img src="images/shimokitazawa.png" alt="Customer Review 6">
+                                <img src="images/case06.jpg" alt="Customer Review 7">
                             </div>
                             <div class="review-content">
                                 <div class="review-stars">
@@ -744,10 +780,32 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <div class="review-quote">
-                                    <p>"Perfect balance of popular spots and hidden gems. Our guide was friendly and knowledgeable!"</p>
+                                    <p>"Our tour guide was amazing, taking us to spots we would never have even known about for a very magical experience. The guide is an English speaker with a great personality and is lots of fun. My son and I had such an amazing experience, and we highly recommend this tour. We will definitely be back again. Thank you for the fantastic experience."</p>
                                 </div>
                                 <div class="review-author">
-                                    <span>Warsaw, Poland</span>
+                                    <span>From Australia</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- レビュー7 -->
+                        <div class="review-card">
+                            <div class="review-image">
+                                <img src="images/case07.jpg" alt="Customer Review 7">
+                            </div>
+                            <div class="review-content">
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="review-quote">
+                                    <p>"Our tour guide was amazing! They showed us the best places in Tokyo to visit. Without this tour, we would not have visited the beautiful Shinjuku Gyoen National Gardens, the Meiji Jingu Main Shrine, or the Shibuya Tower lookout. Definitely worth it. 5 Stars!!!"</p>
+                                </div>
+                                <div class="review-author">
+                                    <span>From Australia</span>
                                 </div>
                             </div>
                         </div>

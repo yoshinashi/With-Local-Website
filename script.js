@@ -49,11 +49,28 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const header = document.querySelector('.header');
 const contactForm = document.querySelector('.contact-form form');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
 // ハンバーガーメニューの切り替え
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    mobileMenuOverlay.classList.toggle('active');
+    
+    // メニューが開いている時はスクロールを無効化
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+});
+
+// オーバーレイをクリックしたときにメニューを閉じる
+mobileMenuOverlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
 });
 
 // ナビゲーションメニューのリンクをクリックしたときにメニューを閉じる
@@ -61,6 +78,8 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
 });
 
@@ -612,12 +631,14 @@ function initCourseSelector() {
     const courseBtns = document.querySelectorAll('.course-btn');
     const courseContents = document.querySelectorAll('.course-content');
     
-    console.log('Course selector initialized. Found buttons:', courseBtns.length);
+    if (courseBtns.length === 0 || courseContents.length === 0) {
+        console.warn('Course selector elements not found');
+        return;
+    }
     
     courseBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetCourse = btn.getAttribute('data-course');
-            console.log('Button clicked:', targetCourse);
             
             // ボタンのアクティブ状態を更新
             courseBtns.forEach(b => b.classList.remove('active'));
@@ -628,20 +649,30 @@ function initCourseSelector() {
                 content.classList.remove('active');
                 if (content.id === targetCourse) {
                     content.classList.add('active');
-                    console.log('Switched to course:', targetCourse);
                     
                     // アニメーションを再実行
                     const stops = content.querySelectorAll('.course-stop');
-                    
                     stops.forEach((stop, index) => {
+                        stop.classList.remove('animate');
                         setTimeout(() => {
                             stop.classList.add('animate');
-                        }, index * 150);
+                        }, index * 200);
                     });
                 }
             });
         });
     });
+    
+    // 初期状態で最初のコースのアニメーションを実行
+    const firstCourse = document.querySelector('.course-content.active');
+    if (firstCourse) {
+        const stops = firstCourse.querySelectorAll('.course-stop');
+        stops.forEach((stop, index) => {
+            setTimeout(() => {
+                stop.classList.add('animate');
+            }, index * 200);
+        });
+    }
 }
 
 // エリアスライダー機能
@@ -667,6 +698,45 @@ function initAreaSlider() {
             dot.className = `dot ${i === 0 ? 'active' : ''}`;
             dot.addEventListener('click', () => goToPosition(i * slideStep * 3));
             dotsContainer.appendChild(dot);
+        }
+    }
+
+    // モバイル用スライド機能
+    function initMobileSlider() {
+        if (window.innerWidth <= 768) {
+            // モバイル時は1つずつスライド
+            const mobileSlideStep = 188; // 180px + 8px gap
+            
+            function nextMobileSlide() {
+                const maxPosition = (totalItems - 1) * mobileSlideStep;
+                if (currentPosition < maxPosition) {
+                    goToPosition(currentPosition + mobileSlideStep);
+                } else {
+                    goToPosition(0); // 最初に戻る
+                }
+            }
+            
+            function prevMobileSlide() {
+                if (currentPosition > 0) {
+                    goToPosition(currentPosition - mobileSlideStep);
+                } else {
+                    const maxPosition = (totalItems - 1) * mobileSlideStep;
+                    goToPosition(maxPosition); // 最後に移動
+                }
+            }
+            
+            // モバイル用ボタンイベント
+            prevBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                prevMobileSlide();
+                startAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                nextMobileSlide();
+                startAutoSlide();
+            });
         }
     }
     
@@ -740,6 +810,7 @@ function initAreaSlider() {
     createDots();
     goToPosition(0);
     startAutoSlide();
+    initMobileSlider();
 }
 
 // エリアモーダル機能
@@ -1504,3 +1575,96 @@ function initContactFormValidation() {
     }
     
 }
+
+// コーススライダー機能（レスポンシブ時のみ）
+function initCourseSlider() {
+    // デスクトップではスライダー機能を無効化
+    if (window.innerWidth > 768) {
+        return;
+    }
+    
+    const courses = ['course1', 'course2', 'course3'];
+    
+    courses.forEach(courseId => {
+        const courseContent = document.querySelector(`#${courseId}`);
+        if (!courseContent) return;
+        
+        const sliderContainer = courseContent.querySelector('.course-stops-container');
+        const prevBtn = courseContent.querySelector(`#${courseId}PrevBtn`);
+        const nextBtn = courseContent.querySelector(`#${courseId}NextBtn`);
+        const dotsContainer = courseContent.querySelector(`#${courseId}Dots`);
+        
+        if (!sliderContainer || !prevBtn || !nextBtn || !dotsContainer) return;
+        
+        const stops = courseContent.querySelectorAll('.course-stop');
+        let currentSlide = 0;
+        const totalSlides = stops.length;
+        
+        // ドットを作成
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = `course-dot ${i === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        // スライドを移動
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            const translateX = -slideIndex * 100;
+            sliderContainer.style.transform = `translateX(${translateX}%)`;
+            
+            // ドットのアクティブ状態を更新
+            document.querySelectorAll(`#${courseId} .course-dot`).forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // ボタンの有効/無効状態を更新
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+        
+        // 次のスライド
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(0); // 最初に戻る
+            }
+        }
+        
+        // 前のスライド
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            } else {
+                goToSlide(totalSlides - 1); // 最後に移動
+            }
+        }
+        
+        // イベントリスナー
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // 初期化
+        createDots();
+        goToSlide(0);
+    });
+}
+
+// Initialize all functions when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initCourseSelector();
+    initAreaSlider();
+    initAreaModal();
+    initReviewsSlider();
+    initDynamicPricing();
+    initContactFormValidation();
+    initCustomDatePicker();
+    initCourseSlider();
+    initMobileMenu();
+    initFormEffects();
+});
