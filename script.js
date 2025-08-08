@@ -1031,6 +1031,9 @@ window.addEventListener('resize', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     }
+    
+    // コーススライダーの再初期化（モバイル/デスクトップ切り替え時）
+    initCourseSlider();
 });
 
 // キーボードナビゲーションの改善
@@ -1594,64 +1597,30 @@ function initCourseSlider() {
         const nextBtn = courseContent.querySelector(`#${courseId}NextBtn`);
         const dotsContainer = courseContent.querySelector(`#${courseId}Dots`);
         
-        if (!sliderContainer || !prevBtn || !nextBtn || !dotsContainer) return;
-        
-        const stops = courseContent.querySelectorAll('.course-stop');
-        let currentSlide = 0;
-        const totalSlides = stops.length;
-        
-        // ドットを作成
-        function createDots() {
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.className = `course-dot ${i === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
-            }
+        if (!sliderContainer) {
+            console.warn(`Course container not found for ${courseId}`);
+            return;
         }
         
-        // スライドを移動
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            const translateX = -slideIndex * 100;
-            sliderContainer.style.transform = `translateX(${translateX}%)`;
-            
-            // ドットのアクティブ状態を更新
-            document.querySelectorAll(`#${courseId} .course-dot`).forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-            
-            // ボタンの有効/無効状態を更新
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === totalSlides - 1;
+        // モバイル時は縦並びレイアウトのため、スライダー機能を無効化
+        // スライダーコントロールを完全に非表示にする
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (dotsContainer) dotsContainer.style.display = 'none';
+        
+        // スライダーコントロールの親要素も非表示にする
+        const sliderControls = courseContent.querySelector('.course-slider-controls');
+        if (sliderControls) {
+            sliderControls.style.display = 'none';
         }
         
-        // 次のスライド
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                goToSlide(currentSlide + 1);
-            } else {
-                goToSlide(0); // 最初に戻る
-            }
-        }
+        // スライダーコンテナを縦並びに設定
+        sliderContainer.style.display = 'flex';
+        sliderContainer.style.flexDirection = 'column';
+        sliderContainer.style.gap = '1rem';
+        sliderContainer.style.overflow = 'visible';
         
-        // 前のスライド
-        function prevSlide() {
-            if (currentSlide > 0) {
-                goToSlide(currentSlide - 1);
-            } else {
-                goToSlide(totalSlides - 1); // 最後に移動
-            }
-        }
-        
-        // イベントリスナー
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        
-        // 初期化
-        createDots();
-        goToSlide(0);
+        console.log(`Course layout initialized for ${courseId} in mobile view`);
     });
 }
 
@@ -1664,7 +1633,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initDynamicPricing();
     initContactFormValidation();
     initCustomDatePicker();
-    initCourseSlider();
     initMobileMenu();
     initFormEffects();
+    
+    // コーススライダーは最後に初期化（他の機能の後に）
+    setTimeout(() => {
+        initCourseSlider();
+    }, 100);
 });
