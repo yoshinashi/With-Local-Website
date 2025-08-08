@@ -1624,6 +1624,19 @@ function initCourseSlider() {
     });
 }
 
+// モバイル版コースレイアウト制御
+function initMobileCourseLayout() {
+    console.log('Initializing mobile course layout...');
+    
+    // モバイル版のみ実行
+    if (window.innerWidth > 768) {
+        console.log('Not mobile view, skipping mobile layout initialization');
+        return;
+    }
+    
+    console.log('Mobile course layout initialized');
+}
+
 // Initialize all functions when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initCourseSelector();
@@ -1639,5 +1652,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // コーススライダーは最後に初期化（他の機能の後に）
     setTimeout(() => {
         initCourseSlider();
-    }, 100);
+        initMobileCourseLayout();
+    }, 1000);
+    
+    // ウィンドウリサイズ時にも再初期化
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            initCourseSlider();
+            initMobileCourseLayout();
+        }, 100);
+    });
 });
