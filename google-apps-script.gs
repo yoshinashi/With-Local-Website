@@ -31,7 +31,7 @@ function doPost(e) {
       timestamp,                    // 送信日時
       data.name || '',             // お名前
       data.email || '',            // メールアドレス
-      data.phone || '',            // 電話番号
+      formatAsText(data.phone),    // 電話番号（文字列保存）
       data['tour-time'] || '',     // 希望開始時間
       data['tour-date1'] || '',    // 第1希望日程
       data['tour-date2'] || '',    // 第2希望日程
@@ -39,8 +39,10 @@ function doPost(e) {
       data.message || ''           // 詳細メッセージ
     ];
     
-    // スプレッドシートにデータを追加
-    sheet.appendRow(rowData);
+    // 追記先の行を取得し、電話番号の列(D列=4列目)をプレーンテキストに設定してから書き込む
+    const targetRow = sheet.getLastRow() + 1;
+    sheet.getRange(targetRow, 4).setNumberFormat('@');
+    sheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
     
     // 成功レスポンスを返す
     return ContentService
@@ -53,6 +55,14 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({ status: 'error', message: error.toString() }))
       .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+// 数値扱いで先頭の0が落ちるのを防ぐため、常にテキストとして保存する
+function formatAsText(value) {
+  if (!value) return '';
+  const str = String(value);
+  // 既にアポストロフィで始まっていればそのまま返す
+  return str.charAt(0) === "'" ? str : "'" + str;
 }
 
 function doGet(e) {

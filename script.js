@@ -144,6 +144,13 @@ if (contactForm) {
             for (let [key, value] of formData.entries()) {
                 data[key] = value;
             }
+            // 電話番号はスプレッドシートで数値化され先頭の0が落ちるため、常にテキストとして送る
+            if (typeof data.phone !== 'undefined' && data.phone !== null) {
+                const normalized = String(data.phone).trim();
+                if (normalized.length > 0) {
+                    data.phone = "'" + normalized;
+                }
+            }
             
             console.log('送信データ:', data);
             

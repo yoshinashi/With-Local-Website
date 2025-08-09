@@ -158,7 +158,7 @@
                 <textarea id="message" name="message" placeholder="テスト用のメッセージです。"></textarea>
             </div>
             
-            <button type="submit">送信テスト</button>
+    <button type="submit">Send Test</button>
         </form>
         
         <div id="notification"></div>
@@ -188,10 +188,10 @@
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             submitButton.disabled = true;
-            submitButton.textContent = '送信中...';
+    submitButton.textContent = 'Sending...';
             
             // 通知を表示
-            showNotification('送信中...', 'info');
+    showNotification('Sending...', 'info');
             
             try {
                 // フォームデータを収集
@@ -202,7 +202,7 @@
                     data[key] = value;
                 }
                 
-                console.log('送信データ:', data);
+    console.log('Data to send:', data);
                 
                 // デバッグ情報を表示
                 updateDebugInfo(data);
@@ -210,7 +210,7 @@
                 // Google Apps ScriptのURL（実際のURLに変更してください）
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbw9PznK4DxeswbwjmOETdBX8aWfBtaHHYc7HQnIL_m_NkRP7AJEpolUG00rpDyooNwVeQ/exec';
                 
-                console.log('送信先URL:', scriptUrl);
+    console.log('Destination URL:', scriptUrl);
                 
                 // データをJSON形式で送信
                 const response = await fetch(scriptUrl, {
@@ -222,11 +222,11 @@
                     body: JSON.stringify(data)
                 });
                 
-                console.log('送信完了');
+    console.log('Sent');
                 console.log('レスポンス:', response);
                 
                 // 成功時の処理
-                showNotification('テスト送信が完了しました。スプレッドシートを確認してください。', 'success');
+    showNotification('Test submission completed. Please check the spreadsheet.', 'success');
                 this.reset();
                 
                 // テスト用の日付を再設定
@@ -234,12 +234,12 @@
                 document.getElementById('tour-date2').value = '12/26/2024';
                 
             } catch (error) {
-                console.error('送信エラー:', error);
-                showNotification('送信に失敗しました。コンソールでエラーを確認してください。', 'error');
+    console.error('Send error:', error);
+    showNotification('Failed to send. Please check the console for errors.', 'error');
                 
                 // エラー情報もデバッグ表示に追加
                 const debugElement = document.getElementById('debugData');
-                debugElement.textContent += '\n\nエラー情報:\n' + error.toString();
+    debugElement.textContent += '\n\nError info:\n' + error.toString();
             } finally {
                 // 送信ボタンを元に戻す
                 submitButton.disabled = false;

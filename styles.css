@@ -4405,6 +4405,9 @@ html {
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     display: none;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .date-picker.active {
@@ -4446,7 +4449,7 @@ html {
 
 .date-picker-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0.25rem;
 }
 
@@ -4514,6 +4517,28 @@ html {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* モバイルでのカレンダー調整 */
+@media (max-width: 480px) {
+    .date-picker {
+        padding: 0.5rem;
+    }
+    .date-picker-grid {
+        gap: 0.15rem;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+    .date-picker-weekday {
+        padding: 0.35rem;
+        font-size: 0.8rem;
+    }
+    .date-picker-day {
+        padding: 0.35rem;
+        font-size: 0.95rem;
+    }
+    .date-picker-nav button {
+        padding: 0.4rem;
     }
 }
 
