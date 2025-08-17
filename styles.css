@@ -90,6 +90,9 @@ body {
     border-radius: 50%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .logo-text {
@@ -1666,6 +1669,9 @@ section {
     border-radius: 50%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .footer-logo-text {

@@ -1,8 +1,159 @@
 // ローディング画面の制御
 const loadingScreen = document.getElementById('loadingScreen');
 
+// 画像読み込みエラー処理
+function handleImageLoadError() {
+    const logoImages = document.querySelectorAll('.logo-image, .footer-logo-image');
+    logoImages.forEach(img => {
+        img.addEventListener('error', function() {
+            console.warn('Logo image failed to load:', this.src);
+            // 代替テキストを表示
+            this.style.display = 'none';
+            const logoText = this.nextElementSibling;
+            if (logoText && logoText.classList.contains('logo-text')) {
+                logoText.style.fontSize = '1.8rem';
+                logoText.style.fontWeight = 'bold';
+            }
+        });
+        
+        // 画像の読み込み状態を確認
+        if (img.complete) {
+            if (img.naturalWidth === 0) {
+                img.dispatchEvent(new Event('error'));
+            }
+        } else {
+            img.addEventListener('load', function() {
+                console.log('Logo image loaded successfully:', this.src);
+            });
+        }
+    });
+}
+
+// 画像のプリロード
+function preloadImages() {
+    const imageUrls = [
+        'images/With Local logo.png?v=20241202'
+    ];
+    
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+            console.log('Preloaded image:', url);
+        };
+        img.onerror = () => {
+            console.warn('Failed to preload image:', url);
+        };
+    });
+}
+
+// ファビコンの設定を確実にする
+function ensureFavicon() {
+    // 既存のファビコンリンクを削除
+    const existingFavicons = document.querySelectorAll('link[rel*="icon"]');
+    existingFavicons.forEach(link => link.remove());
+    
+    // ファビコンリンクを動的に追加
+    const faviconLinks = [
+        { rel: 'icon', type: 'image/png', href: 'images/With Local logo.png?v=20241202' },
+        { rel: 'shortcut icon', href: 'images/With Local logo.png?v=20241202' },
+        { rel: 'icon', href: 'images/With Local logo.png?v=20241202' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: 'images/With Local logo.png?v=20241202' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'images/With Local logo.png?v=20241202' },
+        { rel: 'icon', type: 'image/png', sizes: '48x48', href: 'images/With Local logo.png?v=20241202' }
+    ];
+    
+    faviconLinks.forEach(linkData => {
+        const link = document.createElement('link');
+        Object.assign(link, linkData);
+        document.head.appendChild(link);
+    });
+    
+    // ファビコンを強制的に設定
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.type = 'image/png';
+    favicon.href = 'images/With Local logo.png?v=20241202';
+    document.head.appendChild(favicon);
+    
+    console.log('Favicon links added dynamically and forced');
+}
+
+// OGP画像の読み込みを確実にする
+function ensureOGPImage() {
+    const ogImageUrl = 'https://www.withlocal-japan.com/images/With%20Local%20logo.png';
+    
+    // OGP画像をプリロード
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = ogImageUrl;
+    document.head.appendChild(link);
+    
+    // 画像の読み込みを確認
+    const img = new Image();
+    img.onload = () => {
+        console.log('OGP image loaded successfully:', ogImageUrl);
+    };
+    img.onerror = () => {
+        console.warn('Failed to load OGP image:', ogImageUrl);
+    };
+    img.src = ogImageUrl;
+}
+
+// Google Analytics カスタムイベントトラッキング関数
+function trackEvent(eventName, parameters = {}) {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, parameters);
+    }
+}
+
+// UTMパラメータの自動追跡
+function trackUTMParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source');
+    const utmMedium = urlParams.get('utm_medium');
+    const utmCampaign = urlParams.get('utm_campaign');
+    
+    if (utmSource || utmMedium || utmCampaign) {
+        trackEvent('utm_parameter_detected', {
+            'utm_source': utmSource,
+            'utm_medium': utmMedium,
+            'utm_campaign': utmCampaign
+        });
+    }
+}
+
+// ソーシャルメディアからのアクセス追跡
+function trackSocialMediaAccess() {
+    const referrer = document.referrer;
+    
+    if (referrer.includes('instagram.com')) {
+        trackEvent('social_media_access', {
+            'social_platform': 'instagram',
+            'referrer_url': referrer
+        });
+    } else if (referrer.includes('facebook.com')) {
+        trackEvent('social_media_access', {
+            'social_platform': 'facebook',
+            'referrer_url': referrer
+        });
+    } else if (referrer.includes('twitter.com')) {
+        trackEvent('social_media_access', {
+            'social_platform': 'twitter',
+            'referrer_url': referrer
+        });
+    }
+}
+
 // ページ読み込み完了後にローディング画面を非表示
 window.addEventListener('load', () => {
+    // ページビューのトラッキング
+    trackEvent('page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+    });
+    
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
         setTimeout(() => {
@@ -131,6 +282,12 @@ if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        // フォーム送信イベントのトラッキング
+        trackEvent('form_submit', {
+            form_name: 'contact_form',
+            form_id: 'contactForm'
+        });
+        
         const submitButton = this.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         submitButton.disabled = true;
@@ -176,8 +333,19 @@ if (contactForm) {
             alert('Thank you for your inquiry. We will contact you after reviewing your request. We will send you a message via WhatsApp shortly, please wait a moment.');
             this.reset();
             
+            // フォーム送信成功イベントのトラッキング
+            trackEvent('form_submit_success', {
+                form_name: 'contact_form'
+            });
+            
         } catch (error) {
             console.error('送信エラー:', error);
+            
+            // フォーム送信エラーイベントのトラッキング
+            trackEvent('form_submit_error', {
+                form_name: 'contact_form',
+                error_message: error.message
+            });
         } finally {
             // 送信ボタンを元に戻す
             submitButton.disabled = false;
@@ -286,6 +454,16 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+            
+            // セクション表示イベントのトラッキング
+            const sectionId = entry.target.id || entry.target.className;
+            if (sectionId && !entry.target.dataset.tracked) {
+                trackEvent('section_view', {
+                    section_id: sectionId,
+                    section_name: entry.target.querySelector('h2, h3')?.textContent || sectionId
+                });
+                entry.target.dataset.tracked = 'true';
+            }
             
             // 遅延アニメーション（子要素がある場合）
             const children = entry.target.querySelectorAll('.service-card, .testimonial-card, .feature-item');
@@ -647,6 +825,12 @@ function initCourseSelector() {
         btn.addEventListener('click', () => {
             const targetCourse = btn.getAttribute('data-course');
             
+            // コース選択イベントのトラッキング
+            trackEvent('course_selection', {
+                course_id: targetCourse,
+                course_name: btn.querySelector('.course-title').textContent
+            });
+            
             // ボタンのアクティブ状態を更新
             courseBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -949,6 +1133,12 @@ function initAreaModal() {
             const areaKey = item.getAttribute('data-area');
             const data = areaData[areaKey];
             
+            // エリア詳細表示イベントのトラッキング
+            trackEvent('area_detail_view', {
+                area_key: areaKey,
+                area_name: data ? data.title : areaKey
+            });
+            
             if (data) {
                 // モーダル内容を更新
                 document.getElementById('modalImage').src = data.image;
@@ -992,14 +1182,47 @@ function initAreaModal() {
     });
 }
 
+// ファビコン設定を即座に実行
+ensureFavicon();
+
+// OGP画像読み込みを即座に実行
+ensureOGPImage();
+
 // ページ読み込み時の初期化
 document.addEventListener('DOMContentLoaded', () => {
+    // ファビコン設定を確実にする（再実行）
+    ensureFavicon();
+    
+    // OGP画像読み込みを確実にする（再実行）
+    ensureOGPImage();
+    
+    // 画像のプリロード
+    preloadImages();
+    
+    // 画像読み込みエラー処理を初期化
+    handleImageLoadError();
+    
     // 基本機能の初期化
     initMobileMenu();
     initFormEffects();
     initCourseSelector();
     initAreaSlider();
     initAreaModal();
+    
+    // CTAボタンのクリックトラッキング
+    const ctaButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const buttonText = button.textContent.trim();
+            const buttonHref = button.getAttribute('href');
+            
+            trackEvent('cta_click', {
+                button_text: buttonText,
+                button_href: buttonHref,
+                button_class: button.className
+            });
+        });
+    });
     
     // オプション機能の初期化（パフォーマンスを考慮）
     if (window.innerWidth > 768) {
@@ -1646,6 +1869,10 @@ function initMobileCourseLayout() {
 
 // Initialize all functions when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // UTMパラメータとソーシャルメディアアクセスを追跡
+    trackUTMParameters();
+    trackSocialMediaAccess();
+    
     initCourseSelector();
     initAreaSlider();
     initAreaModal();
